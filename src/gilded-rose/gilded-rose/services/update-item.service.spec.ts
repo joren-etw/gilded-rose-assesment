@@ -18,7 +18,7 @@ describe('UpdateItemService', () => {
     expect(service).toBeDefined();
   });
 
-  const run = (item: Item) => service.handle(item);
+  const run = (item: Item) => service.handle([item])[0];
 
   describe('regular items', () => {
     it('decreases quality and sellIn by 1', () => {

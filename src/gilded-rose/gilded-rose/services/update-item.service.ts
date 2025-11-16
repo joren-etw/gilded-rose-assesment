@@ -5,7 +5,7 @@ import { Item } from '../models/item.model';
 export class UpdateItemService {
   constructor() {}
 
-  handle(item: Item): Item {
-    return item;
+  handle(items: Item[]): Item[] {
+    return items;
   }
 }
