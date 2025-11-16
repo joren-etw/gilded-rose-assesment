@@ -1,10 +1,11 @@
 const { ClientProxyFactory, Transport } = require('@nestjs/microservices');
+const { lastValueFrom } = require('rxjs');
 
 async function main() {
   const raw = process.argv[2];
 
   if (!raw) {
-    console.error('Usage: node client.js \'[{"name":"X","sellin":1,"quality":2}]\'');
+    console.error('Usage: node client.js \'[{"name":"X","sellIn":1,"quality":2}]\'');
     process.exit(1);
   }
 
@@ -22,8 +23,14 @@ async function main() {
     options: { host: 'localhost', port: 4001 },
   });
 
-  const result = await client.send('update-items', items).toPromise();
-  console.log('Updated items:', result);
+  try {
+    const result = await lastValueFrom(client.send('update-items', items));
+    console.log('Updated items:', result);
+  } catch (error) {
+    console.error('Error updating items:', error?.message ?? error);
+  } finally {
+    process.exit(0);
+  }
 }
 
 main();
