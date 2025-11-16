@@ -3,6 +3,7 @@ import { RuleResolverService } from './rule-resolver.service';
 import { GeneralItemRule } from './general-item.rule';
 import { BackstagePassRule } from './backstage-pass.rule';
 import { SulfurasRule } from './sulfuras.rule';
+import { ConjuredRule } from './conjured.rule';
 
 export const RulesProvider = [
   RuleResolverService,
@@ -10,4 +11,5 @@ export const RulesProvider = [
   AgedBrieRule,
   BackstagePassRule,
   SulfurasRule,
+  ConjuredRule,
 ];
