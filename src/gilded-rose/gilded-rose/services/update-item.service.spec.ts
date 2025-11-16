@@ -2,13 +2,14 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { Item } from '../models/item.model';
 import { UpdateItemService } from './update-item.service';
+import { RulesProvider } from './rules/rules.provider';
 
 describe('UpdateItemService', () => {
   let service: UpdateItemService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UpdateItemService],
+      providers: [UpdateItemService, ...RulesProvider],
     }).compile();
 
     service = module.get<UpdateItemService>(UpdateItemService);
@@ -73,7 +74,7 @@ describe('UpdateItemService', () => {
         sellIn: 20,
         quality: 10,
       });
-      expect(result.sellIn).toBe(-19);
+      expect(result.sellIn).toBe(19);
       expect(result.quality).toBe(11);
     });
 
