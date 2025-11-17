@@ -42,6 +42,8 @@ The payload always requires following format:
 ]
 ```
 
+---
+
 To install Node on your system:
 - MacOS: 
   - Make sure you have Brew installed: 
