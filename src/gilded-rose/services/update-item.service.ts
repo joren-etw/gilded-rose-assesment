@@ -8,9 +8,14 @@ export class UpdateItemService {
   constructor(private readonly ruleResolver: RuleResolver) {}
 
   handle(items: ItemDto[]): Item[] {
-    return items.map((item) => {
-      const rule = this.ruleResolver.resolve(item.name);
-      return rule.apply(item);
-    });
+    try {
+      return items.map((item) => {
+        const rule = this.ruleResolver.resolve(item.name);
+        return rule.apply(item);
+      });
+    } catch (error) {
+      console.error('Error updating items:', error);
+      throw error;
+    }
   }
 }
