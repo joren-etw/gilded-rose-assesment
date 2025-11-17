@@ -1,10 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { RuleTemplate } from './rule-template';
+import { RuleAbstract } from './rule.abstract';
 import { Item } from '../../models/item.model';
 
 @Injectable()
-export class ConjuredRule extends RuleTemplate {
+export class ConjuredRule extends RuleAbstract {
   protected updateQuality(item: Item): void {
-    item.quality -= item.sellIn < 0 ? 4 : 2;
+    if (item.sellIn < 0) {
+      item.quality -= 4;
+      return;
+    }
+
+    item.quality -= 2;
   }
 }

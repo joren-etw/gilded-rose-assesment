@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { Item } from '../models/item.model';
-import { RuleResolverService } from './rules/rule-resolver.service';
+import { RuleResolver } from './rules/rule.resolver';
 import { ItemDto } from '../dtos/item.dto';
 
 @Injectable()
 export class UpdateItemService {
-  constructor(private readonly resolver: RuleResolverService) {}
+  constructor(private readonly ruleResolver: RuleResolver) {}
 
   handle(items: ItemDto[]): Item[] {
     return items.map((item) => {
-      const rule = this.resolver.resolve(item.name);
+      const rule = this.ruleResolver.resolve(item.name);
       return rule.apply(item);
     });
   }

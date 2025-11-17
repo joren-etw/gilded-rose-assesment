@@ -1,6 +1,6 @@
 import { Item } from '../../models/item.model';
 
-export abstract class RuleTemplate {
+export abstract class RuleAbstract {
   apply(item: Item): Item {
     const updated = new Item(item.name, item.sellIn, item.quality);
 

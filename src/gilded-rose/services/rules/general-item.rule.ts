@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Item } from '../../models/item.model';
-import { RuleTemplate } from './rule-template';
+import { RuleAbstract } from './rule.abstract';
 
 @Injectable()
-export class GeneralItemRule extends RuleTemplate {
+export class GeneralItemRule extends RuleAbstract {
   protected updateQuality(item: Item): void {
     // General items lose 1 quality per day
     item.quality -= 1;
