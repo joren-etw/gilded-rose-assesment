@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Item } from '../models/item.model';
 import { RuleResolver } from './rules/rule.resolver';
 import { ItemDto } from '../dtos/item.dto';
@@ -15,7 +15,7 @@ export class UpdateItemService {
       });
     } catch (error) {
       console.error('Error updating items:', error);
-      throw error;
+      throw new InternalServerErrorException('Failed to update items');
     }
   }
 }
