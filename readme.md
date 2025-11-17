@@ -24,7 +24,7 @@ npm run build
 
 ---
 
-This is a microservice accepting messages over TCP. Since it's not possible to send HTTP requests to it, I have attached a small script `client.js` which can be used to send messages for demo and testing purposes, which can be used as follows:
+This is a microservice accepting messages over TCP. Since it's not possible to send HTTP requests to it, I have attached a small script `client.js` in the root of the project, which can be used to send messages for demo and testing purposes. It can be used as followed:
 
 ```sh
 node client.js '[{"name":"Aged Brie","sellIn":10,"quality":25},{"name":"Elixir","sellIn":5,"quality":7}]'
